@@ -1,19 +1,22 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "@/index.css";
-import { Home } from "./containers/Home";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-]);
+import { Home } from "@/containers/Home";
+import { Sidebar } from "@/containers/Sidebar";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+    <StrictMode>
+        <BrowserRouter>
+            <div className="flex">
+                <Sidebar />
+                <section>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                    </Routes>
+                </section>
+            </div>
+        </BrowserRouter>
+    </StrictMode>
 );
