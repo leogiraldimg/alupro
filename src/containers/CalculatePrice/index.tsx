@@ -5,17 +5,16 @@ type Inputs = {
     thickness: string;
     width: string;
     length: string;
-    weight: string;
     pricePerKilo: string;
 };
 
 type Price = {
-    thickness: string;
-    width: string;
-    length: string;
-    weight: string;
-    price: number;
+    thickness: number;
+    width: number;
+    length: number;
     pricePerKilo: number;
+    weight: number;
+    price: number;
 };
 
 const CalculatePrice: React.FC = () => {
@@ -29,21 +28,27 @@ const CalculatePrice: React.FC = () => {
     const [prices, setPrices] = useState<Price[]>([]);
 
     const onSubmit = (data: Inputs) => {
-        const { thickness, width, length, weight, pricePerKilo } = data;
+        const { thickness, width, length, pricePerKilo } = data;
+        const thicknessParsed = parseInt(thickness);
+        const widthParsed = parseInt(width);
+        const lengthParsed = parseInt(length);
         const pricePerKiloParsed = parseInt(pricePerKilo);
-        const price = parseInt(weight) * pricePerKiloParsed;
+        const weight =
+            (thicknessParsed * widthParsed * lengthParsed * 2.71) / 1000000;
+        const price = weight * pricePerKiloParsed;
 
         setPrices([
             ...prices,
             {
-                thickness,
-                width,
-                length,
+                thickness: thicknessParsed,
+                width: widthParsed,
+                length: lengthParsed,
+                pricePerKilo: pricePerKiloParsed,
                 weight,
                 price,
-                pricePerKilo: pricePerKiloParsed,
             },
         ]);
+
         reset();
     };
 
@@ -152,37 +157,6 @@ const CalculatePrice: React.FC = () => {
                         </div>
                         <div>
                             <label
-                                htmlFor="weight"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Peso (kg)
-                            </label>
-                            <input
-                                id="weight"
-                                type="number"
-                                step="0.01"
-                                {...register("weight", {
-                                    required:
-                                        "Este campo é de preenchimento obrigatório",
-                                    min: {
-                                        value: 0,
-                                        message: "Peso deve ser maior que 0",
-                                    },
-                                })}
-                                className={`mt-1 block w-full px-3 py-2 bg-white border ${
-                                    errors.weight
-                                        ? "border-red-500"
-                                        : "border-gray-300"
-                                } rounded-md shadow-sm focus:outline-none focus:ring-sky-600 focus:border-sky-600`}
-                            />
-                            {errors.weight && (
-                                <p className="text-red-500 text-sm mt-1">
-                                    {errors.weight.message}
-                                </p>
-                            )}
-                        </div>
-                        <div>
-                            <label
                                 htmlFor="pricePerKilo"
                                 className="block text-sm font-medium text-gray-700"
                             >
@@ -236,10 +210,10 @@ const CalculatePrice: React.FC = () => {
                                     Comprimento
                                 </th>
                                 <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
-                                    Peso
+                                    Preço por Kilo
                                 </th>
                                 <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
-                                    Preço por Kilo
+                                    Peso (kg)
                                 </th>
                                 <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
                                     Preço
@@ -266,10 +240,10 @@ const CalculatePrice: React.FC = () => {
                                         {price.length}
                                     </td>
                                     <td className="px-4 py-2 border border-slate-50 text-gray-700">
-                                        {price.weight}
+                                        R$ {price.pricePerKilo.toFixed(2)}
                                     </td>
                                     <td className="px-4 py-2 border border-slate-50 text-gray-700">
-                                        R$ {price.pricePerKilo.toFixed(2)}
+                                        {price.weight}
                                     </td>
                                     <td className="px-4 py-2 border border-slate-50 text-gray-700">
                                         R$ {price.price.toFixed(2)}
