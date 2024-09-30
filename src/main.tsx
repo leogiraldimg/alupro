@@ -5,17 +5,24 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "@/index.css";
 import { Home } from "@/containers/Home";
 import { Sidebar } from "@/containers/Sidebar";
+import { CalculatePrice } from "@/containers/CalculatePrice";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <BrowserRouter>
             <div className="flex">
                 <Sidebar />
-                <section>
+                <main className="w-full">
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/">
+                            <Route index element={<Home />} />
+                            <Route
+                                path="calculate-price"
+                                element={<CalculatePrice />}
+                            />
+                        </Route>
                     </Routes>
-                </section>
+                </main>
             </div>
         </BrowserRouter>
     </StrictMode>
