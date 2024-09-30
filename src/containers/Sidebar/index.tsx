@@ -42,6 +42,7 @@ const Sidebar: React.FC = () => {
                     <MenuItem
                         component={<Link to={"/"} />}
                         icon={<HomeIcon className="text-sky-600" />}
+                        onClick={() => setToggled(false)}
                         className="text-gray-700 text-sm"
                     >
                         Home
@@ -49,6 +50,7 @@ const Sidebar: React.FC = () => {
                     <MenuItem
                         component={<Link to={"/calculate-price"} />}
                         icon={<MoneyIcon className="text-sky-600" />}
+                        onClick={() => setToggled(false)}
                         className="text-gray-700 text-sm"
                     >
                         Calcula preço
