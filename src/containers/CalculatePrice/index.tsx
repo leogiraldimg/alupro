@@ -23,6 +23,7 @@ const CalculatePrice: React.FC = () => {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm<Inputs>();
 
     const [prices, setPrices] = useState<Price[]>([]);
@@ -43,6 +44,7 @@ const CalculatePrice: React.FC = () => {
                 pricePerKilo: pricePerKiloParsed,
             },
         ]);
+        reset();
     };
 
     return (
@@ -77,7 +79,7 @@ const CalculatePrice: React.FC = () => {
                                     errors.thickness
                                         ? "border-red-500"
                                         : "border-gray-300"
-                                } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
+                                } rounded-md shadow-sm focus:outline-none focus:ring-sky-600 focus:border-sky-600`}
                             />
                             {errors.thickness && (
                                 <p className="text-red-500 text-sm mt-1">
@@ -108,7 +110,7 @@ const CalculatePrice: React.FC = () => {
                                     errors.width
                                         ? "border-red-500"
                                         : "border-gray-300"
-                                } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
+                                } rounded-md shadow-sm focus:outline-none focus:ring-sky-600 focus:border-sky-600`}
                             />
                             {errors.width && (
                                 <p className="text-red-500 text-sm mt-1">
@@ -140,7 +142,7 @@ const CalculatePrice: React.FC = () => {
                                     errors.length
                                         ? "border-red-500"
                                         : "border-gray-300"
-                                } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
+                                } rounded-md shadow-sm focus:outline-none focus:ring-sky-600 focus:border-sky-600`}
                             />
                             {errors.length && (
                                 <p className="text-red-500 text-sm mt-1">
@@ -171,7 +173,7 @@ const CalculatePrice: React.FC = () => {
                                     errors.weight
                                         ? "border-red-500"
                                         : "border-gray-300"
-                                } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
+                                } rounded-md shadow-sm focus:outline-none focus:ring-sky-600 focus:border-sky-600`}
                             />
                             {errors.weight && (
                                 <p className="text-red-500 text-sm mt-1">
@@ -202,7 +204,7 @@ const CalculatePrice: React.FC = () => {
                                     errors.pricePerKilo
                                         ? "border-red-500"
                                         : "border-gray-300"
-                                } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
+                                } rounded-md shadow-sm focus:outline-none focus:ring-sky-600 focus:border-sky-600`}
                             />
                             {errors.pricePerKilo && (
                                 <p className="text-red-500 text-sm mt-1">
@@ -213,7 +215,7 @@ const CalculatePrice: React.FC = () => {
                         <div className="flex items-center justify-center">
                             <button
                                 type="submit"
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                className="bg-sky-500 hover:bg-sky-700 text-slate-50 font-bold py-2 px-4 rounded"
                             >
                                 Adicionar
                             </button>
@@ -221,25 +223,25 @@ const CalculatePrice: React.FC = () => {
                     </form>
                 </div>
                 <div className="w-full md:w-2/3 overflow-x-auto mt-10 md:mt-0 md:ml-6">
-                    <table className="table-auto w-full border-collapse border border-gray-300">
-                        <thead className="bg-gray-200">
+                    <table className="table-auto w-full border-collapse border border-slate-50 shadow-md">
+                        <thead className="bg-sky-500 text-slate-50">
                             <tr>
-                                <th className="px-4 py-2 border border-gray-300 text-left font-semibold">
+                                <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
                                     Espessura (mm)
                                 </th>
-                                <th className="px-4 py-2 border border-gray-300 text-left font-semibold">
+                                <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
                                     Largura
                                 </th>
-                                <th className="px-4 py-2 border border-gray-300 text-left font-semibold">
+                                <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
                                     Comprimento
                                 </th>
-                                <th className="px-4 py-2 border border-gray-300 text-left font-semibold">
+                                <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
                                     Peso
                                 </th>
-                                <th className="px-4 py-2 border border-gray-300 text-left font-semibold">
+                                <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
                                     Preço por Kilo
                                 </th>
-                                <th className="px-4 py-2 border border-gray-300 text-left font-semibold">
+                                <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
                                     Preço
                                 </th>
                             </tr>
@@ -251,25 +253,25 @@ const CalculatePrice: React.FC = () => {
                                     className={`${
                                         index % 2 === 0
                                             ? "bg-white"
-                                            : "bg-gray-100"
-                                    } hover:bg-gray-50`}
+                                            : "bg-sky-200"
+                                    } hover:bg-sky-100`}
                                 >
-                                    <td className="px-4 py-2 border border-gray-300">
+                                    <td className="px-4 py-2 border border-slate-50 text-gray-700">
                                         {price.thickness}
                                     </td>
-                                    <td className="px-4 py-2 border border-gray-300">
+                                    <td className="px-4 py-2 border border-slate-50 text-gray-700">
                                         {price.width}
                                     </td>
-                                    <td className="px-4 py-2 border border-gray-300">
+                                    <td className="px-4 py-2 border border-slate-50 text-gray-700">
                                         {price.length}
                                     </td>
-                                    <td className="px-4 py-2 border border-gray-300">
+                                    <td className="px-4 py-2 border border-slate-50 text-gray-700">
                                         {price.weight}
                                     </td>
-                                    <td className="px-4 py-2 border border-gray-300">
+                                    <td className="px-4 py-2 border border-slate-50 text-gray-700">
                                         R$ {price.pricePerKilo.toFixed(2)}
                                     </td>
-                                    <td className="px-4 py-2 border border-gray-300">
+                                    <td className="px-4 py-2 border border-slate-50 text-gray-700">
                                         R$ {price.price.toFixed(2)}
                                     </td>
                                 </tr>

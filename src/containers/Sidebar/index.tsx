@@ -1,17 +1,10 @@
 import React, { useState } from "react";
-import {
-    Menu,
-    MenuItem,
-    sidebarClasses,
-    Sidebar as SidebarComp,
-} from "react-pro-sidebar";
+import { Menu, MenuItem, Sidebar as SidebarComp } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import MoneyOutlined from "@mui/icons-material/MoneyOutlined";
-import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
-
-import { COLOR_DARK_SLATE_GRAY, COLOR_VANILLA } from "@/constants/colors";
+import MenuIcon from "@mui/icons-material/MenuRounded";
+import HomeIcon from "@mui/icons-material/HomeRounded";
+import MoneyIcon from "@mui/icons-material/AttachMoneyRounded";
+import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustifyRounded";
 
 const Sidebar: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -22,18 +15,13 @@ const Sidebar: React.FC = () => {
         <>
             {broken && (
                 <button
-                    className="fixed top-2 left-2 z-10"
+                    className="fixed top-2 left-2 z-10 text-sky-600"
                     onClick={() => setToggled(!toggled)}
                 >
                     <FormatAlignJustifyIcon />
                 </button>
             )}
             <SidebarComp
-                rootStyles={{
-                    [`.${sidebarClasses.container}`]: {
-                        backgroundColor: COLOR_DARK_SLATE_GRAY,
-                    },
-                }}
                 className="h-[100vh]"
                 collapsed={collapsed}
                 toggled={toggled}
@@ -41,37 +29,29 @@ const Sidebar: React.FC = () => {
                 onBreakPoint={setBroken}
                 onBackdropClick={() => setToggled(false)}
             >
-                <Menu
-                    menuItemStyles={{
-                        button: {
-                            color: COLOR_VANILLA,
-                            ":hover": {
-                                color: COLOR_DARK_SLATE_GRAY,
-                                backgroundColor: COLOR_VANILLA,
-                            },
-                        },
-                    }}
-                >
+                <Menu>
                     <MenuItem
-                        icon={<MenuOutlinedIcon />}
+                        icon={<MenuIcon />}
                         onClick={() => {
                             setCollapsed(!collapsed);
                         }}
-                        className="text-center"
+                        className="text-center text-sky-600"
                     >
-                        <h1 className="font-bold">AluPro</h1>
+                        <h1 className="font-bold text-xl">AluPro</h1>
                     </MenuItem>
                     <MenuItem
                         component={<Link to={"/"} />}
-                        icon={<HomeOutlinedIcon />}
+                        icon={<HomeIcon className="text-sky-600" />}
+                        className="text-gray-700 text-sm"
                     >
                         Home
                     </MenuItem>
                     <MenuItem
                         component={<Link to={"/calculate-price"} />}
-                        icon={<MoneyOutlined />}
+                        icon={<MoneyIcon className="text-sky-600" />}
+                        className="text-gray-700 text-sm"
                     >
-                        Calcula Preço
+                        Calcula preço
                     </MenuItem>
                 </Menu>
             </SidebarComp>
