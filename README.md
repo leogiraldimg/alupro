@@ -1,50 +1,38 @@
-# React + TypeScript + Vite
+<h1 align="center">🧰 AluPro</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">Encontre aqui todas as ferramentas necessárias para facilitar seu dia a dia no mundo do alumínio cortado sob medida.</p>
 
-Currently, two official plugins are available:
+<p align="center">
+    <a href="#funcionalidades">Funcionalidades</a> •
+    <a href="#pre-requisitos">Pré-requisitos</a> •
+    <a href="#subindo-aplicacao">Subindo a aplicação</a> •
+    <a href="#tecnologias-utilizadas">Tecnologias utilizadas</a>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h3 id="funcionalidades">Funcionalidades</h3>
 
-## Expanding the ESLint configuration
+- [x] Cálculo de preço de barra chata
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<h3 id="pre-requisitos">Pré-requisitos</h3>
 
-- Configure the top-level `parserOptions` property like this:
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: [Git](https://git-scm.com/) e [Node.js](https://nodejs.org/en).
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+<h3 id="subindo-aplicacao">Subindo a aplicação</h3>
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/leogiraldimg/alupro.git
+
+# Acesse o diretório do projeto clonado
+$ cd alupro
+
+# Suba a aplicação
+$ npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<h3 id="tecnologias-utilizadas">Tecnologias utilizadas</h3>
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+As seguintes ferramentas foram usadas na construção do projeto:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- [Node.js](https://nodejs.org/en)
+- [TypeScript](https://www.typescriptlang.org/)
