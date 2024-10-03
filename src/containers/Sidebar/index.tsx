@@ -40,7 +40,7 @@ const Sidebar: React.FC = () => {
                         <h1 className="font-bold text-xl">AluPro</h1>
                     </MenuItem>
                     <MenuItem
-                        component={<Link to={"/alupro/"} />}
+                        component={<Link to={"/"} />}
                         icon={<HomeIcon className="text-sky-600" />}
                         onClick={() => setToggled(false)}
                         className="text-gray-700 text-sm"
@@ -48,7 +48,7 @@ const Sidebar: React.FC = () => {
                         Home
                     </MenuItem>
                     <MenuItem
-                        component={<Link to={"/alupro/calculate-price"} />}
+                        component={<Link to={"/calculate-price"} />}
                         icon={<MoneyIcon className="text-sky-600" />}
                         onClick={() => setToggled(false)}
                         className="text-gray-700 text-sm"
