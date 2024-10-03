@@ -14,7 +14,7 @@ createRoot(document.getElementById("root")!).render(
                 <Sidebar />
                 <main className="w-full">
                     <Routes>
-                        <Route path="/">
+                        <Route path="/alupro/">
                             <Route index element={<Home />} />
                             <Route
                                 path="calculate-price"
