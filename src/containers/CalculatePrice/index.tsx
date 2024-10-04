@@ -29,10 +29,10 @@ const CalculatePrice: React.FC = () => {
 
     const onSubmit = (data: Inputs) => {
         const { thickness, width, length, pricePerKilo } = data;
-        const thicknessParsed = parseInt(thickness);
-        const widthParsed = parseInt(width);
-        const lengthParsed = parseInt(length);
-        const pricePerKiloParsed = parseInt(pricePerKilo);
+        const thicknessParsed = parseFloat(thickness);
+        const widthParsed = parseFloat(width);
+        const lengthParsed = parseFloat(length);
+        const pricePerKiloParsed = parseFloat(pricePerKilo);
         const weight =
             (thicknessParsed * widthParsed * lengthParsed * 2.71) / 1000000;
         const price = weight * pricePerKiloParsed;
@@ -240,13 +240,13 @@ const CalculatePrice: React.FC = () => {
                                         {price.length}
                                     </td>
                                     <td className="px-4 py-2 border border-slate-50 text-gray-700">
-                                        R$ {price.pricePerKilo.toFixed(2)}
+                                        R$ {price.pricePerKilo.toString()}
                                     </td>
                                     <td className="px-4 py-2 border border-slate-50 text-gray-700">
                                         {price.weight}
                                     </td>
                                     <td className="px-4 py-2 border border-slate-50 text-gray-700">
-                                        R$ {price.price.toFixed(2)}
+                                        R$ {price.price.toString()}
                                     </td>
                                 </tr>
                             ))}
