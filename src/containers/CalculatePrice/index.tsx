@@ -243,10 +243,17 @@ const CalculatePrice: React.FC = () => {
                                         R$ {price.pricePerKilo.toString()}
                                     </td>
                                     <td className="px-4 py-2 border border-slate-50 text-gray-700">
-                                        {price.weight}
+                                        {(price.weight > 1
+                                            ? price.weight.toFixed(2)
+                                            : price.weight
+                                        ).toString()}
                                     </td>
                                     <td className="px-4 py-2 border border-slate-50 text-gray-700">
-                                        R$ {price.price.toString()}
+                                        R${" "}
+                                        {(price.price > 1
+                                            ? price.price.toFixed(2)
+                                            : price.price
+                                        ).toString()}
                                     </td>
                                 </tr>
                             ))}
