@@ -53,7 +53,7 @@ const Sidebar: React.FC = () => {
                         onClick={() => setToggled(false)}
                         className="text-gray-700 text-sm"
                     >
-                        Calculo preço barra chata
+                        Calculo preço chato
                     </MenuItem>
                 </Menu>
             </SidebarComp>
