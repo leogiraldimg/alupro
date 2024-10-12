@@ -49,7 +49,11 @@ const CalculatePrice: React.FC = () => {
             },
         ]);
 
-        reset();
+        reset({
+            thickness: "",
+            width: "",
+            length: "",
+        });
     };
 
     return (
