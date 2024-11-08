@@ -23,12 +23,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      
-    - name: Install project dependencies
-      run: npm install
 
-    - name: Build project
-      run: npm run build
-
-    - name: Run tests with coverage
-      run: npm run test:coverage
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        install-command: npm install
+        build: npm run build
+        start: npm run preview
+        browser: chrome

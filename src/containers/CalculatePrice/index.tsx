@@ -192,6 +192,7 @@ const CalculatePrice: React.FC = () => {
                         </div>
                         <div className="flex items-center justify-center">
                             <button
+                                id="submit-button"
                                 type="submit"
                                 className="bg-sky-500 hover:bg-sky-700 text-slate-50 font-bold py-2 px-4 rounded"
                             >
@@ -201,7 +202,10 @@ const CalculatePrice: React.FC = () => {
                     </form>
                 </div>
                 <div className="w-full md:w-2/3 overflow-x-auto mt-10 md:mt-0 md:ml-6">
-                    <table className="table-auto w-full border-collapse border border-slate-50 shadow-md">
+                    <table
+                        className="table-auto w-full border-collapse border border-slate-50 shadow-md"
+                        id="price-table"
+                    >
                         <thead className="bg-sky-500 text-slate-50">
                             <tr>
                                 <th className="px-4 py-2 border border-slate-50 text-left font-semibold">
