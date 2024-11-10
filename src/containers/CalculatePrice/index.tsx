@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { utils, writeFile } from "xlsx";
+import { toast } from "react-toastify";
 
 type Inputs = {
     thickness: string;
@@ -54,6 +56,39 @@ const CalculatePrice: React.FC = () => {
             width: "",
             length: "",
         });
+    };
+
+    const exportPrices = () => {
+        if (prices.length === 0) {
+            toast.error(
+                "É necessário adicionar um preço de barra chata antes de exportar"
+            );
+            return;
+        }
+
+        const headers = [
+            "Espessura (mm)",
+            "Largura",
+            "Comprimento",
+            "Preco por Kilo",
+            "Peso (kg)",
+            "Preco",
+        ];
+        const data = [
+            headers,
+            ...prices.map((price) => [
+                price.thickness,
+                price.width,
+                price.length,
+                price.pricePerKilo.toString(),
+                price.weight > 1 ? price.weight.toFixed(2) : price.weight,
+                price.price > 1 ? price.price.toFixed(2) : price.price,
+            ]),
+        ];
+        const worksheet = utils.aoa_to_sheet(data);
+        const workbook = utils.book_new();
+        utils.book_append_sheet(workbook, worksheet, "Precos");
+        writeFile(workbook, "precos.xlsx");
     };
 
     return (
@@ -267,6 +302,14 @@ const CalculatePrice: React.FC = () => {
                             ))}
                         </tbody>
                     </table>
+                    <button
+                        id="export-button"
+                        type="button"
+                        onClick={() => exportPrices()}
+                        className="bg-sky-500 hover:bg-sky-700 text-slate-50 font-bold py-2 px-4 rounded mt-2"
+                    >
+                        Exportar
+                    </button>
                 </div>
             </div>
         </section>
