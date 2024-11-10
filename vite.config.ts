@@ -11,4 +11,10 @@ export default defineConfig({
         },
     },
     base: "/alupro/",
+    server: {
+        port: 4173,
+    },
+    optimizeDeps: {
+        include: ["xlsx"],
+    },
 });
